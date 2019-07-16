@@ -1,6 +1,9 @@
 {
   "version": 2,
   "name": "micro-apis",
+  "env": {
+    "AIRTABLE_API_KEY": "@airtable-api-key"
+  },
   "builds": [{ "src": "**/*.js", "use": "@now/node" }],
   "routes": [{ "src": "/(.*)", "dest": "/routes/$1.js" }]
 }
