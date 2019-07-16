@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "name": "micro-apis",
+  "builds": [{ "src": "**/*.js", "use": "@now/node" }],
+  "routes": [{ "src": "/(.*)", "dest": "/routes/$1.js" }]
+}
