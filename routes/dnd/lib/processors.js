@@ -59,3 +59,42 @@ export function feats(records) {
     return feats
   }, [])
 }
+
+export function spells(records) {
+  // shape: { name:string, level:number, duration:stirng, save:string, range:string, castingTime:string, effect:string, description:string  }
+
+  return records.reduce((spells, record) => {
+    let wrappedDescriptionText = record
+      .get('description')
+      .split('\n')
+      .reduce((string, line) => {
+        string = string + `<p>${line}</p>`
+        return string
+      }, '')
+
+    let spell = {
+      name: record.get('name'),
+      level: record.get('level'),
+      duration: record.get('duration'),
+      save: record.get('saveOrHit'),
+      range: record.get('range'),
+      castingTime: record.get('castingTime'),
+      effect: record.get('effect'),
+      description: wrappedDescriptionText
+    }
+    spells.push(spell)
+    return spells
+  }, [])
+}
+
+export function spellSlots(records) {
+  // shape: { level:number, used:bool }
+  return records.reduce((slots, record) => {
+    let slot = {
+      level: record.get('level'),
+      status: record.get('status')
+    }
+    slots.push(slot)
+    return slots
+  }, [])
+}

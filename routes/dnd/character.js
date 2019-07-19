@@ -28,14 +28,33 @@ async function fetchData() {
     .select()
     .firstPage()
 
+  const spellsRecords = await base('knownSpells')
+    .select({ view: 'gallery' })
+    .firstPage()
+
+  const spellSlotRecords = await base('spellSlots')
+    .select({ view: 'list' })
+    .firstPage()
+
   const stats = processor.stats(statsRecords)
   const abilities = processor.abilities(abilitiesRecords)
   const skills = processor.skills(skillsRecords)
   const weapons = processor.weapons(weaponsRecords)
   const inventory = processor.inventory(inventoryRecords)
   const feats = processor.feats(featsRecords)
+  const spells = processor.spells(spellsRecords)
+  const spellSlots = processor.spellSlots(spellSlotRecords)
 
-  return { stats, abilities, skills, weapons, inventory, feats }
+  return {
+    stats,
+    abilities,
+    skills,
+    weapons,
+    spells,
+    spellSlots,
+    inventory,
+    feats
+  }
 }
 
 module.exports = async function(req, res) {
