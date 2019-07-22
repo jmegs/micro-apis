@@ -91,6 +91,7 @@ export function spellSlots(records) {
   // shape: { level:number, used:bool }
   return records.reduce((slots, record) => {
     let slot = {
+      id: record.get('recordID'),
       level: record.get('level'),
       status: record.get('status')
     }
