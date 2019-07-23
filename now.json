@@ -9,8 +9,7 @@
     {
       "src": "/(.*)",
       "dest": "/routes/$1.js",
-      "headers": { "Access-Control-Allow-Origin": "*" },
-      "methods": ["POST", "GET"]
+      "headers": { "Access-Control-Allow-Origin": "*" }
     }
   ]
 }
